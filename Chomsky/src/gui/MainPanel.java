@@ -21,14 +21,16 @@ public class MainPanel extends JPanel implements ActionListener {
 	private Button pasos;
 	private TextArea tfGramaticaFNC;
 
+	private MainWindow mw;
 	
-	public MainPanel() {
+	public MainPanel(MainWindow mw) {
 		
 		setVisible(true);
 		setSize(new Dimension(1000, 1000));
 		setLayout(new BorderLayout());
 		setBackground(new Color(255,255,255));
 
+		this.mw = mw;
 		
 		tfGramatica = new TextArea();
 		add(BorderLayout.NORTH, tfGramatica);
@@ -52,16 +54,36 @@ public class MainPanel extends JPanel implements ActionListener {
 	}
 
 
+	public TextArea getTfGramatica() {
+		return tfGramatica;
+	}
+
+
+	public void setTfGramatica(TextArea tfGramatica) {
+		this.tfGramatica = tfGramatica;
+	}
+
+
+	public TextArea getTfGramaticaFNC() {
+		return tfGramaticaFNC;
+	}
+
+
+	public void setTfGramaticaFNC(TextArea tfGramaticaFNC) {
+		this.tfGramaticaFNC = tfGramaticaFNC;
+	}
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getActionCommand().equals(FNC)) {
-			 if(tfGramatica.getText()==null) {
-				
+			 if(tfGramatica.getText()!=null) {
+				mw.ingresarTexto(tfGramatica.getText());
 			}
 		}
 		if(e.getActionCommand().equals(PASOS)) {
-			if(tfGramatica.getText()==null) {
+			if(tfGramatica.getText()!=null) {
 				
 			}
 			

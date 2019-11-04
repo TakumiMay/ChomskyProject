@@ -19,11 +19,20 @@ public class MainWindow extends JFrame{
 		setResizable(true );
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		mainPanel = new MainPanel();
+		mainPanel = new MainPanel(this);
 		add(BorderLayout.CENTER,mainPanel);
-		
+				
 		pack();
 	}
+	
+	public void ingresarTexto(String texto) {
+		try {
+			gramatica = new Gramatica(texto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}	
 
 	public static void main(String[] args) {
 		MainWindow gui = new MainWindow();
