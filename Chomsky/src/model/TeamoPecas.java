@@ -1,8 +1,7 @@
 package model;
 
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Set;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class TeamoPecas {
 
@@ -23,14 +22,31 @@ public class TeamoPecas {
 		
 		
 	}
-	
+
+
 	public static void main(String[] args) {
-		Hashtable<Character, String> rules= new Hashtable<>();
-		rules.put('S', "aA");
-		rules.put('S', "bB");
-		rules.put('S', "cC");
-		Set<Character> keys = rules.keySet();
-		System.out.println(rules.get('S'));
+		HashMap<Character, List<String>> reglas = new HashMap<Character, List<String>>();
+		reglas.put('A', Arrays.asList("AAA", "BBB"));
+		reglas.put('B', Arrays.asList("CCC", "DDD"));
+		reglas.put('D', Arrays.asList("EEE", "FFF"));
+		Collection<List<String>> conjuntoProducciones = reglas.values();
+		List<String> joinProducciones = new ArrayList<>();
+		for (List<String> producciones: conjuntoProducciones
+			 ) {
+			joinProducciones.addAll(producciones);
+		}
+		System.out.println("holis");
+	}
+
+	private static boolean isTerminal(String produccion){
+		List<Character> terminales = Arrays.asList('a','b','c');
+		char[] productionChar = produccion.toCharArray();
+		for (char letter: productionChar
+			 ) {
+			if (!terminales.contains(letter))
+				return false;
+		}
+		return true;
 	}
 
 }
