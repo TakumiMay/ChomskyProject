@@ -2,10 +2,13 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+<<<<<<< HEAD:Chomsky/src/model/Grammar.java
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+=======
+>>>>>>> 2ce64c0d21e5c16ee17693654cd4b6acce303624:Chomsky/src/model/Gramatica.java
 
 public class Grammar {
 
