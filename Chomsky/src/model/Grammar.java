@@ -2,12 +2,15 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
-public class Gramatica {
+public class Grammar {
 
 	//Producciones de entrada
-	private ArrayList<Regla> reglas;
+	private Hashtable<Character, ArrayList<String>> reglas;
 	
 	//Lista de variables 
 	private ArrayList<Character> variables;
@@ -22,9 +25,9 @@ public class Gramatica {
 	private ArrayList<Regla> nuevasReglas;
 	
 	
-	public Gramatica(String texto) throws Exception {
+	public Grammar(String texto) throws Exception {
 		
-		reglas = new ArrayList<Regla>();
+		reglas = new Hashtable<Character, ArrayList<String>>();
 		variables = new ArrayList<Character>();
 		terminales = new ArrayList<Character>();
 		
@@ -32,7 +35,7 @@ public class Gramatica {
 		
 		for (int i = 0; i < lineas.length; i++) {
 			
-			String linea = lineas[i];
+			String linea = lineas[i].trim();
 			
 			 if (linea != null && linea.trim().length() != 0) {
 				 linea = linea.replace(" ", "");
@@ -63,29 +66,38 @@ public class Gramatica {
                  //No hay problema con el formato
                  
                  Regla nueva = new Regla(generador,prod2);
-                 reglas.add(nueva);
+                 reglas.put(generador, prod2);
 
                  if(variables.contains(generador) == false){
                 	 
                      variables.add(generador);
-                 }
-                 
-			 }
-			 
+                 }   
+			 }	 
 		}
-
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public void getFNC() {
+		eliminarTerminales();
+	}
+
+	private void eliminarTerminales() {
+		ArrayList<Character> resultado = new ArrayList<Character>();
+		ArrayList<Character> comparables = (ArrayList<Character>) terminales.clone();
+		int terminalesInicial=terminales.size();
+		int terminalesFinal = 0;
+		//do {
+			for (Character character : reglas.keySet()) {
+				ArrayList<String> producciones= reglas.get(character);
+				boolean finish= false;
+				for (int i = 0; i<producciones.size() && !finish; i++) {
+					String produccion = producciones.get(i);
+					System.out.println(produccion);
+					//if(isTerminal(ltado.add(character);
+					//}
+				}
+			}
+			//System.out.println();
+
+		//} while (condition);
+	}
 }

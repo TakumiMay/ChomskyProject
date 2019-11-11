@@ -5,12 +5,12 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import model.Gramatica;
+import model.Grammar;
 
 public class MainWindow extends JFrame{
 	
 	private MainPanel mainPanel;
-	private Gramatica gramatica;
+	private Grammar gramatica;
 
 	public MainWindow() {
 		setTitle("Forma Normal de Chomsky");
@@ -25,9 +25,10 @@ public class MainWindow extends JFrame{
 		pack();
 	}
 	
-	public void ingresarTexto(String texto) {
+	public void iniciarFNC(String texto) {
 		try {
-			gramatica = new Gramatica(texto);
+			gramatica = new Grammar(texto);
+			gramatica.getFNC();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
