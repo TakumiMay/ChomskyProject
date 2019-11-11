@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 
+import static utils.Alcanzables.encontrarAlcanzables;
+import static utils.Alcanzables.getReglasAlcanzables;
 import static utils.Terminales.*;
 
 
 public class Grammar {
+
+    public static final char VARIABLE_INICIAL = 'S';
 
     //Producciones de entrada
     private Hashtable<Character, ArrayList<String>> reglas;
@@ -71,14 +75,16 @@ public class Grammar {
     }
 
     public void getFNC() {
-        eliminarTerminales();
-        eliminarAlcanzables();
+        eliminarNoTerminales();
+        eliminarNoAlcanzables();
     }
 
-    private void eliminarAlcanzables() {
+    private void eliminarNoAlcanzables() {
+        ArrayList<Character> alcanzables = encontrarAlcanzables(reglas);
+        reglas = getReglasAlcanzables(alcanzables, reglas);
     }
 
-    private void eliminarTerminales() {
+    private void eliminarNoTerminales() {
         ArrayList<String> firstTerminales = getFirstTerminales(reglas.values());
         ArrayList<Character> terminalesRecursivo = getTerminalesRecursivo(reglas, firstTerminales);
         reglas = getReglasSinNoTerminales(reglas, terminalesRecursivo);
