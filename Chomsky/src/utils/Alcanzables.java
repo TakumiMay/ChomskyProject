@@ -13,7 +13,7 @@ public class Alcanzables {
      */
     public static ArrayList<Character> encontrarAlcanzables(Hashtable<Character, ArrayList<String>> reglas) {
         ArrayList<Character> variables = new ArrayList<>();
-        List<String> produccionesIniciales = reglas.get(Grammar.VARIABLE_INICIAL);
+        List<String> produccionesIniciales = (List<String>) reglas.get(Grammar.VARIABLE_INICIAL).clone();
         variables.add(Grammar.VARIABLE_INICIAL);
         int tamanioInicial;
         do {

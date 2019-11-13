@@ -3,9 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
+import java.util.ListIterator;
 
 import static utils.Alcanzables.encontrarAlcanzables;
 import static utils.Alcanzables.getReglasAlcanzables;
+import static utils.Anulables.existeAnulableEnProducciones;
+import static utils.Anulables.getAnulable;
 import static utils.Terminales.*;
 
 
@@ -86,7 +89,45 @@ public class Grammar {
     public void getFNC() {
         eliminarNoTerminales();
         eliminarNoAlcanzables();
+        eliminarAnulables();
     }
+
+    private void eliminarAnulables() {
+        ArrayList<Character> anulables = getAnulable(reglas);
+        reglas = getReglasSinAnulables(reglas, anulables);
+    }
+
+    private Hashtable<Character, ArrayList<String>> getReglasSinAnulables(Hashtable<Character, ArrayList<String>> reglas, ArrayList<Character> anulables) {
+        Hashtable<Character, ArrayList<String>> reglasSinAnulables = (Hashtable<Character, ArrayList<String>>) reglas.clone();
+        for (Character anulable : anulables
+        ) {
+            if (anulable != LAMBDA) {
+                do {
+                    for (Character variable : reglasSinAnulables.keySet()
+                    ) {
+                        ListIterator<String> producciones = reglasSinAnulables.get(variable).listIterator();
+                        ArrayList<String> produccionesAEliminar = new ArrayList<>();
+                        ArrayList<String> produccionesAAñadir = new ArrayList<>();
+                        while (producciones.hasNext()) {
+                            String produccion = producciones.next();
+                            if (produccion.contains(String.valueOf(anulable))) {
+                                for (String produccionAnulable : reglasSinAnulables.get(anulable)
+                                ) {
+                                    if (!produccionAnulable.equals(String.valueOf(LAMBDA)))
+                                        produccionesAAñadir.add(produccion.replaceAll(String.valueOf(anulable), produccionAnulable));
+                                }
+                                produccionesAEliminar.add(produccion);
+                            }
+                        }
+                        reglasSinAnulables.get(variable).addAll(produccionesAAñadir);
+                        reglasSinAnulables.get(variable).removeAll(produccionesAEliminar);
+                    }
+                } while (existeAnulableEnProducciones(reglas, anulable));
+            }
+        }
+        return reglasSinAnulables;
+    }
+
 
     /**
      * Elimina las variables no alcanzables

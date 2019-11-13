@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd0a9771-f6a1-4d3a-bd93-fddcc1c878e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Grammar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Grammar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Regla.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Regla.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/Alcanzables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Alcanzables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Anulables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Anulables.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/Terminales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Terminales.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -100,6 +99,14 @@
       <option name="presentableId" value="Default" />
       <updated>1573489867671</updated>
     </task>
+    <task id="LOCAL-00001" summary="add documentation">
+      <created>1573617340508</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573617340508</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,30 +122,39 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add documentation" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/TeamoPecas.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="36" />
+          <line>120</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/utils/Alcanzables.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="37" />
+          <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/utils/Alcanzables.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="43" />
+          <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((Hashtable.Entry)reglas.entrySet().toArray()[2]).getKey()" custom="java.util.Hashtable.Entry" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
