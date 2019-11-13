@@ -4,6 +4,12 @@ import java.util.*;
 
 public class Terminales {
 
+    /**
+     * Encuentra el listado de las primeras variables terminales, es decir,
+     * aquellas que son las letras minúscula y no están concatenadas con variables
+     * @param conjuntoProducciones
+     * @return primer conjunto de variables terminales
+     */
     public static ArrayList<String> getFirstTerminales(Collection<ArrayList<String>> conjuntoProducciones) {
         List<String> joinProducciones = new ArrayList<>();
         ArrayList<String> terminales = new ArrayList<String>();
@@ -24,6 +30,14 @@ public class Terminales {
         return terminales;
     }
 
+    /**
+     * A partir de un conjunto de variables terminales y una producción, determina si
+     * la combinación de las terminales da como resultado una producción, diciendo así que la
+     * producción también es terminal
+     * @param produccion, variable a verificar si es terminal
+     * @param pTerminales conjunto de caracteres terminales
+     * @return booleano que dice si es terminal
+     */
     public static boolean isTerminal(String produccion, ArrayList<String> pTerminales) {
         char[] productionChar = produccion.toCharArray();
         for (char letter : productionChar) {
@@ -33,6 +47,14 @@ public class Terminales {
         return true;
     }
 
+    /**
+     * a partir de un conjunto inicial de variables terminales, encuentra las variables
+     * que son terminales de forma recursiva. Este es el caso general para encontrar las
+     * variables recursiva
+     * @param reglas conjunto inicial de reglas
+     * @param comparables conjunto inicial de variables terminales
+     * @return conjunto de variables terminales
+     */
     public static ArrayList<Character> getTerminalesRecursivo(Hashtable<Character,
             ArrayList<String>> reglas, ArrayList<String> comparables) {
         ArrayList<Character> resultado = new ArrayList<>();
@@ -56,6 +78,14 @@ public class Terminales {
         return resultado;
     }
 
+    /**
+     * Una vez se tienen las terminales, y el conjunto de reglas inicial, se eliminan
+     * aquellas que no son terminales, y las producciones que las contengan
+     * dando como resultado las reglas sin variables no terminales
+     * @param reglas reglas iniciales
+     * @param terminales connjunto de variables terminales
+     * @return las reglas sin variables no terminales
+     */
     public static Hashtable<Character, ArrayList<String>> getReglasSinNoTerminales(Hashtable<Character, ArrayList<String>> reglas,
                                                                                    ArrayList<Character> terminales) {
         Hashtable<Character, ArrayList<String>> reglasTerminales = new Hashtable<>();
@@ -72,6 +102,13 @@ public class Terminales {
         return eliminarProduccionesNoTerminales(noTerminales, reglasTerminales);
     }
 
+    /**
+     * Elimina del conjunto de reglas que no son terminales las producciones
+     * que contengan una variable no terminal
+     * @param noTerminales
+     * @param reglasTerminales
+     * @return reglas sin producciones terminales
+     */
     private static Hashtable<Character, ArrayList<String>> eliminarProduccionesNoTerminales(List<Character> noTerminales,
                                                                                             Hashtable<Character, ArrayList<String>> reglasTerminales) {
         Iterator<Character> keys = reglasTerminales.keySet().iterator();

@@ -10,8 +10,11 @@ import static utils.Terminales.*;
 
 
 public class Grammar {
-
+    //Variable inicial de toda la gramática
     public static final char VARIABLE_INICIAL = 'S';
+
+    //Representa el valor nulo de una gramatica.
+    public static final char LAMBDA = '&';
 
     //Producciones de entrada
     private Hashtable<Character, ArrayList<String>> reglas;
@@ -25,7 +28,12 @@ public class Grammar {
     //Producciones resultantes en FNC
     private ArrayList<Regla> nuevasReglas;
 
-
+    /**
+     * Este método pasa el texto del front a un diccionario
+     *
+     * @param texto, variable que contiene todo el texto del front
+     * @throws Exception
+     */
     public Grammar(String texto) throws Exception {
 
         reglas = new Hashtable<Character, ArrayList<String>>();
@@ -55,7 +63,7 @@ public class Grammar {
                 //La parte izquierda de la regla NO es una letra mayuscula
 
                 char generador = partes[0].charAt(0);
-                if (generador < 'A' || generador > 'Z' || generador == (Regla.LAMBDA)) {
+                if (generador < 'A' || generador > 'Z' || generador == (LAMBDA)) {
                     throw new Exception("La variable generadora debe ser una letra mayuscula");
                 }
 
@@ -63,8 +71,6 @@ public class Grammar {
 
                 ArrayList<String> prod2 = new ArrayList<String>(Arrays.asList(producciones));
 
-                //No hay problema con el formato
-                Regla nueva = new Regla(generador, prod2);
                 reglas.put(generador, prod2);
 
                 if (variables.contains(generador) == false) {
@@ -74,16 +80,25 @@ public class Grammar {
         }
     }
 
+    /**
+     * Método encargado de hacer el algoritmo de Forma normal de chomsky
+     */
     public void getFNC() {
         eliminarNoTerminales();
         eliminarNoAlcanzables();
     }
 
+    /**
+     * Elimina las variables no alcanzables
+     */
     private void eliminarNoAlcanzables() {
         ArrayList<Character> alcanzables = encontrarAlcanzables(reglas);
         reglas = getReglasAlcanzables(alcanzables, reglas);
     }
 
+    /**
+     * Elimina las variables no terminales
+     */
     private void eliminarNoTerminales() {
         ArrayList<String> firstTerminales = getFirstTerminales(reglas.values());
         ArrayList<Character> terminalesRecursivo = getTerminalesRecursivo(reglas, firstTerminales);

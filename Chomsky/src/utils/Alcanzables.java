@@ -6,6 +6,11 @@ import model.Regla;
 import java.util.*;
 
 public class Alcanzables {
+    /**
+     * Encuentra las variables que son alcanzables desde la regla inicial S
+     * @param reglas reglas a encontrar alcanzables
+     * @return listado de variables alcanzables
+     */
     public static ArrayList<Character> encontrarAlcanzables(Hashtable<Character, ArrayList<String>> reglas) {
         ArrayList<Character> variables = new ArrayList<>();
         List<String> produccionesIniciales = reglas.get(Grammar.VARIABLE_INICIAL);
@@ -27,7 +32,7 @@ public class Alcanzables {
             ) {
                 for (Character letra : produccion.toCharArray()
                 ) {
-                    if (!variables.contains(letra) && letra != Regla.LAMBDA
+                    if (!variables.contains(letra) && letra != Grammar.LAMBDA
                             && letra.toString().equals(letra.toString().toUpperCase()))
                         variables.add(letra);
                 }
@@ -36,6 +41,12 @@ public class Alcanzables {
         return variables;
     }
 
+    /**
+     * Reglas que contienen solo las variables alcanzables
+     * @param alcanzables conjunto de variables alcanzables
+     * @param reglas raglas a eliminar las no alcanzables
+     * @return reglas con solo las variables alcanzables
+     */
     public static Hashtable<Character, ArrayList<String>> getReglasAlcanzables(ArrayList<Character> alcanzables, Hashtable<Character, ArrayList<String>> reglas) {
         Hashtable<Character, ArrayList<String>> reglasAlcanzables = new Hashtable<>();
         for (Character alcanzable : alcanzables
