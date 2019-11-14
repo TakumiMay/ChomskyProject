@@ -1,24 +1,18 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Label;
-import java.awt.TextArea;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JPanel;
 
 public class MainPanel extends JPanel implements ActionListener {
 
 	public static final String FNC ="FNC";
-	public static final String PASOS ="PASOS";
+	public static final String LIMPIAR ="LIMPIAR";
 	
 	private TextArea tfGramatica;
 	private Button chomsky;
-	private Button pasos;
+	private Button limpiar;
 	private TextArea tfGramaticaFNC;
 
 	private MainWindow mw;
@@ -43,11 +37,11 @@ public class MainPanel extends JPanel implements ActionListener {
 		
 		add(BorderLayout.CENTER, new Label());
 		
-		pasos = new Button ("Ver pasos");
-		pasos.addActionListener(this);
-		pasos.setActionCommand(PASOS);
-		pasos.setBackground(Color.WHITE);
-		add(BorderLayout.EAST, pasos);
+		limpiar = new Button ("Borrar Todo");
+		limpiar.addActionListener(this);
+		limpiar.setActionCommand(LIMPIAR);
+		limpiar.setBackground(Color.WHITE);
+		add(BorderLayout.EAST, limpiar);
 		
 		tfGramaticaFNC = new TextArea();
 		add(BorderLayout.SOUTH, tfGramaticaFNC);
@@ -76,18 +70,14 @@ public class MainPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if(e.getActionCommand().equals(FNC)) {
 			 if(tfGramatica.getText()!=null) {
 				mw.iniciarFNC();
-				
 			}
 		}
-		if(e.getActionCommand().equals(PASOS)) {
-			if(tfGramatica.getText()!=null) {
-				
-			}
-			
+		if(e.getActionCommand().equals(LIMPIAR)) {
+
 		}
 	}
 	

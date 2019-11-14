@@ -36,6 +36,7 @@ public class MainWindow extends JFrame {
         setSize(new Dimension(1000, 600));
         setLayout(new BorderLayout());
         setResizable(true);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         grammarPanel = new LeftPanelGrammar(this);
@@ -56,7 +57,16 @@ public class MainWindow extends JFrame {
         try {
             grammarModel = new Grammar(grammarTxt);
             grammarModel.getFNC();
-            fncPanel.getTxtFNCGrammar().setText(grammarModel.getReglasFNC().toString());
+            fncPanel.getTxtFNCGrammar().setText(
+                    "GRAMATICA SIN NO TERMINALES \n" +
+                            grammarModel.toString(grammarModel.getTerminalesRules()) + "\n" +
+                            "\nGRAMATICA SIN NO ALCANZABLES  \n" +
+                            grammarModel.toString(grammarModel.getAlcanzablesRules()) + "\n" +
+                            "\nGRAMATICA SIN ANULABLES  \n" +
+                            grammarModel.toString(grammarModel.getAnulablesRules()) + "\n" +
+                            "\nGRAMATICA SIN UNITARIAS  \n" +
+                            grammarModel.toString(grammarModel.getUnitariasRules()) + "\n"
+            );
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No ha ingresado la gramatica a convertir");
         }
@@ -69,5 +79,10 @@ public class MainWindow extends JFrame {
     public static void main(String[] args) {
         MainWindow gui = new MainWindow();
         gui.setVisible(true);
+    }
+
+    public void clean() {
+        grammarPanel.cleanTxt();
+        fncPanel.cleanTxt();
     }
 }

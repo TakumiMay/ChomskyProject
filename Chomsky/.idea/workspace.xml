@@ -3,10 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="bd0a9771-f6a1-4d3a-bd93-fddcc1c878e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/CenterPanelFNC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/CenterPanelFNC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LeftPanelGrammar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LeftPanelGrammar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/MainPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/RightPanelOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/RightPanelOptions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Grammar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Grammar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Anulables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Anulables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Regla.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Alcanzables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Alcanzables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Unitarias.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Unitarias.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Gramaticas_Prueba.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Gramaticas_Prueba.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573623266790</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="crear métodos anulables">
+      <created>1573706741098</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573706741098</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,35 +145,26 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add documentation" />
     <MESSAGE value="crear documentación e iniciar eliminación de anulables en las producciones" />
-    <option name="LAST_COMMIT_MESSAGE" value="crear documentación e iniciar eliminación de anulables en las producciones" />
+    <MESSAGE value="crear métodos anulables" />
+    <option name="LAST_COMMIT_MESSAGE" value="crear métodos anulables" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="105" />
+          <line>148</line>
+          <option name="timeStamp" value="120" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="109" />
+          <url>file://$PROJECT_DIR$/src/utils/Unitarias.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="121" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/Grammar.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gui/MainWindow.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="112" />
+          <url>file://$PROJECT_DIR$/src/utils/Unitarias.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="122" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -18,7 +18,7 @@ public class RightPanelOptions extends JPanel implements ActionListener {
 	/**
 	 * 
 	 */
-	public static final String PASOS ="PASOS";
+	public static final String LIMPIAR ="LIMPIAR";
 	
 	/**
 	 * 
@@ -31,7 +31,7 @@ public class RightPanelOptions extends JPanel implements ActionListener {
 	/**
 	 * 
 	 */
-	private Button pasos;
+	private Button limpiar;
 	
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class RightPanelOptions extends JPanel implements ActionListener {
 	 */
 	public RightPanelOptions(MainWindow window) {
 		setVisible(true);
-		setPreferredSize(new Dimension(360, 600));
+		setPreferredSize(new Dimension(100, 600));
 		setBackground(new Color(255,255,255));
 		
 		this.window = window;
@@ -57,14 +57,14 @@ public class RightPanelOptions extends JPanel implements ActionListener {
 		chomsky.setActionCommand(FNC);
 		chomsky.setBackground(Color.WHITE);
 		
-		pasos = new Button ("Ver pasos");
-		pasos.addActionListener(this);
-		pasos.setActionCommand(PASOS);
-		pasos.setBackground(Color.WHITE);
+		limpiar = new Button ("LIMPIAR");
+		limpiar.addActionListener(this);
+		limpiar.setActionCommand(LIMPIAR);
+		limpiar.setBackground(Color.WHITE);
 		
 		add(lbTitle);
 		add(chomsky);
-		add(pasos);
+		add(limpiar);
 	}
 	
 	/**
@@ -76,8 +76,8 @@ public class RightPanelOptions extends JPanel implements ActionListener {
 		if(e.getActionCommand().equals(FNC)) {
 			 window.iniciarFNC();
 		}
-		if(e.getActionCommand().equals(PASOS)) {
-						
+		if(e.getActionCommand().equals(LIMPIAR)) {
+			window.clean();
 		}
 	}
 

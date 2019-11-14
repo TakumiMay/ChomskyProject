@@ -9,6 +9,7 @@ import static utils.Alcanzables.getReglasAlcanzables;
 import static utils.Anulables.getAnulable;
 import static utils.Anulables.getReglasSinAnulables;
 import static utils.Terminales.*;
+import static utils.Unitarias.getReglasSinUnitarias;
 
 
 public class Grammar {
@@ -24,11 +25,11 @@ public class Grammar {
     //Lista de variables
     private ArrayList<Character> variables;
 
-    //Posibles variables de entrada
-    private ArrayList<Character> variablesPosibles;
+    private Hashtable<Character, ArrayList<String>> terminalesRules;
+    private Hashtable<Character, ArrayList<String>> alcanzablesRules;
+    private Hashtable<Character, ArrayList<String>> anulablesRules;
+    private Hashtable<Character, ArrayList<String>> unitariasRules;
 
-    //Producciones resultantes en FNC
-    private ArrayList<Regla> nuevasReglas;
 
     /**
      * Este método pasa el texto del front a un diccionario
@@ -93,36 +94,15 @@ public class Grammar {
         eliminarNoTerminales();
         eliminarNoAlcanzables();
         eliminarAnulables();
-        //eliminarUnitarias();
+        eliminarUnitarias();
     }
 
     /**
      * Elimina las variables unitarias
      */
     private void eliminarUnitarias() {
-        reglas = getReglasSinUnitarias(reglas);
-    }
-
-    public Hashtable<Character, ArrayList<String>> getReglasSinUnitarias(Hashtable<Character, ArrayList<String>> reglas) {
-        Hashtable<Character, ArrayList<String>> reglasCopia = (Hashtable<Character, ArrayList<String>>) reglas.clone();
-        Hashtable<Character, ArrayList<String>> reglasSinUnitarias = new Hashtable<>();
-        for (Character variable : reglasCopia.keySet()
-        ) {
-            String produccionAEliminar;
-            ArrayList<String> produccionesAgregar = new ArrayList<>();
-            ArrayList<String> producciones = reglasCopia.get(variable);
-            for (String produccion : producciones
-            ) {
-                if (produccion.length() == 1 && variables.contains(produccion.charAt(0))) {
-                    produccionAEliminar = produccion;
-                    produccionesAgregar = reglasCopia.get(produccionAEliminar);
-                }
-                ArrayList<String> nuevasProducciones = (ArrayList<String>) reglasCopia.get(variable).clone();
-                nuevasProducciones.addAll(produccionesAgregar);
-                reglasSinUnitarias.put(variable, nuevasProducciones);
-            }
-        }
-        return reglasCopia;
+        reglas = getReglasSinUnitarias(reglas, variables);
+        unitariasRules = (Hashtable<Character, ArrayList<String>>) reglas.clone();
     }
 
     /**
@@ -131,6 +111,7 @@ public class Grammar {
     private void eliminarAnulables() {
         ArrayList<Character> anulables = getAnulable(reglas);
         reglas = getReglasSinAnulables(reglas, anulables);
+        anulablesRules = (Hashtable<Character, ArrayList<String>>) reglas.clone();
     }
 
     /**
@@ -139,6 +120,7 @@ public class Grammar {
     private void eliminarNoAlcanzables() {
         ArrayList<Character> alcanzables = encontrarAlcanzables(reglas);
         reglas = getReglasAlcanzables(alcanzables, reglas);
+        alcanzablesRules = (Hashtable<Character, ArrayList<String>>) reglas.clone();
     }
 
     /**
@@ -148,5 +130,38 @@ public class Grammar {
         ArrayList<String> firstTerminales = getFirstTerminales(reglas.values());
         ArrayList<Character> terminalesRecursivo = getTerminalesRecursivo(reglas, firstTerminales);
         reglas = getReglasSinNoTerminales(reglas, terminalesRecursivo);
+        terminalesRules = (Hashtable<Character, ArrayList<String>>) reglas.clone();
+    }
+
+    public String toString(Hashtable<Character, ArrayList<String>> pasoReglas) {
+        String gramatica = "";
+        for (Character letra : pasoReglas.keySet()
+        ) {
+            ArrayList<String> producciones = pasoReglas.get(letra);
+            gramatica += String.valueOf(letra) + " => ";
+            for (int i = 0; i < producciones.size(); i++) {
+                if (i < producciones.size() - 1)
+                    gramatica += producciones.get(i) + " | ";
+                else
+                    gramatica += producciones.get(i) + "\n";
+            }
+        }
+        return gramatica;
+    }
+
+    public Hashtable<Character, ArrayList<String>> getTerminalesRules() {
+        return terminalesRules;
+    }
+
+    public Hashtable<Character, ArrayList<String>> getAlcanzablesRules() {
+        return alcanzablesRules;
+    }
+
+    public Hashtable<Character, ArrayList<String>> getAnulablesRules() {
+        return anulablesRules;
+    }
+
+    public Hashtable<Character, ArrayList<String>> getUnitariasRules() {
+        return unitariasRules;
     }
 }

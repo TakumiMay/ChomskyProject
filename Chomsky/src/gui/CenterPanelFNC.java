@@ -1,11 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Label;
-import java.awt.TextArea;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,21 +10,21 @@ import javax.swing.SwingConstants;
 public class CenterPanelFNC extends JPanel{
 
 	/**
-	 * 
+	 *
 	 */
 	private Label lbTitle;
 	/**
-	 * 
+	 *
 	 */
 	private TextArea txtFNCGrammar;
 
 	/**
-	 * 
+	 *
 	 */
 	private MainWindow window;
-	
+
 	/**
-	 * 
+	 *
 	 * @param window
 	 */
 	public CenterPanelFNC(MainWindow window) {
@@ -39,17 +34,20 @@ public class CenterPanelFNC extends JPanel{
 		setBackground(new Color(255,255,255));
 
 		this.window = window;
-		
-		lbTitle = new Label("Gramática en Forma Normal de Chomsky");
+
+		lbTitle = new Label("Gramatica en Forma Normal de Chomsky");
 		lbTitle.setAlignment(Label.CENTER);
 		txtFNCGrammar = new TextArea();
-		
+		txtFNCGrammar.setEditable(false);
+		Font font = new Font("Segoe Script", Font.BOLD, 15);
+		txtFNCGrammar.setFont(font);
+
 		add(BorderLayout.NORTH, lbTitle);
 		add(BorderLayout.CENTER, txtFNCGrammar);
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public TextArea getTxtFNCGrammar() {
@@ -57,11 +55,14 @@ public class CenterPanelFNC extends JPanel{
 	}
 
 	/**
-	 * 
+	 *
 	 * @param txtFNCGrammar
 	 */
 	public void setTxtFNCGrammar(TextArea txtFNCGrammar) {
 		this.txtFNCGrammar = txtFNCGrammar;
 	}
-	
+
+	public void cleanTxt(){
+		this.txtFNCGrammar.setText("");
+	}
 }

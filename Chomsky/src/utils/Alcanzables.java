@@ -1,9 +1,10 @@
 package utils;
 
 import model.Grammar;
-import model.Regla;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
 public class Alcanzables {
     /**
