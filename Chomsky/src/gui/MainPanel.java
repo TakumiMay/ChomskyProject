@@ -79,7 +79,7 @@ public class MainPanel extends JPanel implements ActionListener {
 		
 		if(e.getActionCommand().equals(FNC)) {
 			 if(tfGramatica.getText()!=null) {
-				mw.iniciarFNC(tfGramatica.getText());
+				mw.iniciarFNC();
 				
 			}
 		}
